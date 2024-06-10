@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\StockTrackingApi.Application\StockTrackingApi.Application.csproj" />
+  </ItemGroup>
+
 </Project>
