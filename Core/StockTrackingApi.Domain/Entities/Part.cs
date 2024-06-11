@@ -31,7 +31,7 @@ namespace StockTrackingApi.Domain.Entities
         public int Stock { get; set; }
         public float Profit { get; set; }
         public bool Invoice { get; set; }
-        public int ModelId { get; set; }
+        public int ModelId { get; set; } //PartBrandModel'in id'si
        // public ICollection<WarehousePart> WarehouseParts { get; set; }
 
         public PartBrandModel PartBrandModel { get; set; }
