@@ -9,15 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{EAC2149C-47B4-4D78-9BFF-BDF5E18C15E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrackingApi.Application", "Core\StockTrackingApi.Application\StockTrackingApi.Application.csproj", "{0138E067-078F-4B24-B2AD-69A4679B7423}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockTrackingApi.Application", "Core\StockTrackingApi.Application\StockTrackingApi.Application.csproj", "{0138E067-078F-4B24-B2AD-69A4679B7423}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrackingApi.Domain", "Core\StockTrackingApi.Domain\StockTrackingApi.Domain.csproj", "{EAD8CCBC-3D0F-4BD2-96BD-3D44659538F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockTrackingApi.Domain", "Core\StockTrackingApi.Domain\StockTrackingApi.Domain.csproj", "{EAD8CCBC-3D0F-4BD2-96BD-3D44659538F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrackingApi.Infrastructure", "Infrastructure\StockTrackingApi.Infrastructure\StockTrackingApi.Infrastructure.csproj", "{F1B61E13-1685-475F-9FF6-4F9E17436D04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockTrackingApi.Infrastructure", "Infrastructure\StockTrackingApi.Infrastructure\StockTrackingApi.Infrastructure.csproj", "{F1B61E13-1685-475F-9FF6-4F9E17436D04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrackingApi.Persistence", "Infrastructure\StockTrackingApi.Persistence\StockTrackingApi.Persistence.csproj", "{A921EACD-7BE0-4A22-AF63-A9B96D072536}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockTrackingApi.Persistence", "Infrastructure\StockTrackingApi.Persistence\StockTrackingApi.Persistence.csproj", "{A921EACD-7BE0-4A22-AF63-A9B96D072536}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrackingApi.Api", "Presentation\StockTrackingApi.Api\StockTrackingApi.Api.csproj", "{484894D0-AEE5-42B5-ACBE-8A86BD3B2EC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockTrackingApi.Api", "Presentation\StockTrackingApi.Api\StockTrackingApi.Api.csproj", "{484894D0-AEE5-42B5-ACBE-8A86BD3B2EC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrackingApi.Mapper", "StockTrackingapi.Mapper\StockTrackingApi.Mapper.csproj", "{EEF31979-4067-4BC1-8C7F-5BA2AE9B31C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{484894D0-AEE5-42B5-ACBE-8A86BD3B2EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{484894D0-AEE5-42B5-ACBE-8A86BD3B2EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{484894D0-AEE5-42B5-ACBE-8A86BD3B2EC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF31979-4067-4BC1-8C7F-5BA2AE9B31C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEF31979-4067-4BC1-8C7F-5BA2AE9B31C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEF31979-4067-4BC1-8C7F-5BA2AE9B31C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEF31979-4067-4BC1-8C7F-5BA2AE9B31C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{F1B61E13-1685-475F-9FF6-4F9E17436D04} = {392919F1-CF3C-4013-8FFC-8F5CF71FC4AF}
 		{A921EACD-7BE0-4A22-AF63-A9B96D072536} = {392919F1-CF3C-4013-8FFC-8F5CF71FC4AF}
 		{484894D0-AEE5-42B5-ACBE-8A86BD3B2EC7} = {EAC2149C-47B4-4D78-9BFF-BDF5E18C15E7}
+		{EEF31979-4067-4BC1-8C7F-5BA2AE9B31C7} = {6E8BCAA7-0940-4148-8866-19A6FFE7C9B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9670FB42-31E5-439E-A9CF-C0F1FCA3DCAB}

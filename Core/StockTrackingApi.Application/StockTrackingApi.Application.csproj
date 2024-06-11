@@ -7,7 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\StockTrackingApi.Domain\StockTrackingApi.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\CarBrandModels\Command\" />
+    <Folder Include="Features\CarBrandModels\Queries\" />
+    <Folder Include="Features\PartBrandModels\Command\" />
+    <Folder Include="Features\PartBrandModels\Queries\" />
+    <Folder Include="Features\PartMovements\Command\" />
+    <Folder Include="Features\PartMovements\Queries\" />
+    <Folder Include="Features\Parts\Command\" />
+    <Folder Include="Features\Warehouses\Command\" />
+    <Folder Include="Features\Warehouses\Queries\" />
   </ItemGroup>
 
 </Project>
