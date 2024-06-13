@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using StockTrackingApi.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StockTrackingApi.Persistence.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User, Role, int>
     {
         public AppDbContext() { }
         public AppDbContext(DbContextOptions options) : base(options) 
@@ -26,6 +27,7 @@ namespace StockTrackingApi.Persistence.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Part>()
                 .HasOne(p => p.PartBrandModel)
                 .WithMany()
