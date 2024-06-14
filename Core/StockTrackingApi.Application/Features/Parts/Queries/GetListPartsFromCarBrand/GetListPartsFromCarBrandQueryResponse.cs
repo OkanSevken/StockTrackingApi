@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromBrand
+namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromCarBrand
 {
-    public class GetListPartsFromBrandQueryResponse
+    public class GetListPartsFromCarBrandQueryResponse
     {
-        public int Id { get; set; }
+        public int PartId { get; set; }
         public string Name { get; set; }
         public string BrandName { get; set; }
         public string ModelName { get; set; }
@@ -20,6 +20,5 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromBr
         public int Stock { get; set; }
         public float Profit { get; set; }
         public bool Invoice { get; set; }
-
     }
 }

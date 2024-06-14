@@ -39,6 +39,7 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetAllListParts
                     PurchasePrice = part.PurchasePrice,
                     SalePrice = part.SalePrice,
                     Vat = part.Vat,
+                    VatPaid = part.VatPaid,
                     Stock = part.Stock,
                     Profit = part.Profit,
                     Invoice = part.Invoice
