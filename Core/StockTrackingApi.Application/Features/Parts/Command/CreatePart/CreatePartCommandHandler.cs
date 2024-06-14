@@ -23,8 +23,10 @@ namespace StockTrackingApi.Application.Features.Parts.Command.CreatePart
 
         public async Task<Unit> Handle(CreatePartCommandRequest request, CancellationToken cancellationToken)
         {
-            float profit = request.Stock * (request.SalePrice - request.PurchasePrice);
-            float vatPaid = request.Stock * ((request.SalePrice*request.Vat/100)-(request.PurchasePrice*request.Vat/100));
+            var warehouseParts = await unitOfWork.GetReadRepository<WarehousePart>().GetAllAsync(x => x.PartId == request.PartId);
+            var totalStock = warehouseParts.Sum(x => x.StockQuantity);
+            float profit = totalStock * (request.SalePrice - request.PurchasePrice);
+            float vatPaid = totalStock * ((request.SalePrice*request.Vat/100)-(request.PurchasePrice*request.Vat/100));
 
             Part part = new
             (
@@ -33,7 +35,7 @@ namespace StockTrackingApi.Application.Features.Parts.Command.CreatePart
                 request.PurchasePrice,
                 request.SalePrice,
                 request.Vat,
-                request.Stock,
+                totalStock,
                 request.Invoice,
                 request.ModelId
             );
