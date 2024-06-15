@@ -22,8 +22,7 @@
     <Folder Include="Features\CarBrandModels\Queries\" />
     <Folder Include="Features\PartBrandModels\Command\" />
     <Folder Include="Features\PartBrandModels\Queries\" />
-    <Folder Include="Features\PartMovements\Queries\" />
-    <Folder Include="Features\Warehouses\Command\" />
+    <Folder Include="Features\WarehouseParts\Command\" />
   </ItemGroup>
 
 </Project>
