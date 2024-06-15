@@ -33,6 +33,11 @@ namespace StockTrackingApi.Application.Features.Parts.Command.UpdatePart
             parts.Stock=request.Stock;
             parts.Invoice=request.Invoice;
 
+            parts.LastModifyDate = DateTime.Now;
+
+            // var user = await userManager.GetUserAsync(httpContextAccessor.HttpContext.User);
+            parts.LastUserId = request.Id;
+
             float profit = request.Stock * (request.SalePrice - request.PurchasePrice);
             float vatPaid = request.Stock * ((request.SalePrice * request.Vat / 100) - (request.PurchasePrice * request.Vat / 100));
 
