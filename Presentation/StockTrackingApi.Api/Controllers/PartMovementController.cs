@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StockTrackingApi.Application.Features.PartMovements.Command.CreatePartMovement;
+using StockTrackingApi.Application.Features.PartMovements.Command.DeletePartMovement;
+using StockTrackingApi.Application.Features.PartMovements.Command.UpdatePartMovement;
 using StockTrackingApi.Application.Features.PartMovements.Queries.GetAllListPartMovements;
 using StockTrackingApi.Application.Features.PartMovements.Queries.GetListPartMovementsFromPart;
 
@@ -33,6 +35,21 @@ namespace StockTrackingApi.Api.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CreatePartMovements(CreatePartMovementCommandRequest request)
+        {
+            await mediator.Send(request);
+            return Ok();
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> UpdatePartMovements(UpdatePartMovementCommandRequest request)
+        {
+            await mediator.Send(request);
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletePartMovements(DeletePartMovementCommandRequest request)
         {
             await mediator.Send(request);
             return Ok();

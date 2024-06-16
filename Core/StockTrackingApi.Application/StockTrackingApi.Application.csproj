@@ -17,12 +17,4 @@
     <ProjectReference Include="..\StockTrackingApi.Domain\StockTrackingApi.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\CarBrandModels\Command\" />
-    <Folder Include="Features\CarBrandModels\Queries\" />
-    <Folder Include="Features\PartBrandModels\Command\" />
-    <Folder Include="Features\PartBrandModels\Queries\" />
-    <Folder Include="Features\WarehouseParts\Command\" />
-  </ItemGroup>
-
 </Project>
