@@ -1,5 +1,6 @@
 ﻿using Azure.Core;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StockTrackingApi.Application.Features.Parts.Command.CreatePart;
@@ -22,6 +23,7 @@ namespace StockTrackingApi.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles ="admin,user")]
         public async Task<IActionResult> GetAllParts()
         {
             var response = await mediator.Send(new GetAllPartsQueryRequest());
