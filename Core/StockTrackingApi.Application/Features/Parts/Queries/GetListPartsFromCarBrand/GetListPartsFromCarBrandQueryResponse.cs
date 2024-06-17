@@ -19,6 +19,5 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromCa
         public float VatPaid { get; set; }
         public int Stock { get; set; }
         public float Profit { get; set; }
-        public bool Invoice { get; set; }
     }
 }

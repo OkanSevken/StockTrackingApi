@@ -12,6 +12,8 @@ namespace StockTrackingApi.Application.Features.PartMovements.Command.CreatePart
         public int PartId { get; set; }
         public int WarehouseId { get; set; }
         public int Amount { get; set; }
+        public int Price { get; set; }
+        public bool Invoice { get; set; }
         public string MovementType { get; set; } 
         public string Description { get; set; }
     }

@@ -31,7 +31,6 @@ namespace StockTrackingApi.Application.Features.Parts.Command.UpdatePart
             parts.SalePrice = request.SalePrice;
             parts.Vat=request.Vat;
             parts.Stock=request.Stock;
-            parts.Invoice=request.Invoice;
 
             parts.LastModifyDate = DateTime.Now;
 

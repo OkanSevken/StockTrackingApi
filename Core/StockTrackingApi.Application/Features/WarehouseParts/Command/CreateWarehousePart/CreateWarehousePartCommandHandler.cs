@@ -25,16 +25,11 @@ namespace StockTrackingApi.Application.Features.WarehouseParts.Command.CreateWar
         {
             var part = await unitOfWork.GetReadRepository<Part>().GetAsync(x => x.Id == request.PartId && x.IsActive == true && x.IsDeleted == false);
 
-            // WarehousePart stok miktarını, Part tablosundaki stok miktarını geçmeyecek şekilde güncelle
-            if (request.StockQuantity > part.Stock)
-            {
-                throw new InvalidOperationException("Fazla stok miktarı girdiniz");
-            }
+           
             WarehousePart warehousePart = new
                 (
                     request.WarehouseId,
-                    request.PartId,
-                    request.StockQuantity
+                    request.PartId
                 );
             warehousePart.CreatedDate = DateTime.Now;
             warehousePart.CreaterUserId = 1;

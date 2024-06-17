@@ -25,7 +25,6 @@ namespace StockTrackingApi.Application.Features.PartMovements.Command.CreatePart
         {
 
             var part = await unitOfWork.GetReadRepository<Part>().GetAsync(x => x.Id == request.PartId);
-            
             var warehousePart = await unitOfWork.GetReadRepository<WarehousePart>().GetAsync(x => x.PartId == request.PartId && x.WarehouseId == request.WarehouseId);
 
             var transaction = new PartMovement
@@ -33,16 +32,26 @@ namespace StockTrackingApi.Application.Features.PartMovements.Command.CreatePart
                 PartId = request.PartId,
                 WarehouseId = request.WarehouseId,
                 Amount = request.Amount,
+                Price = request.Price,
+                Invoice= request.Invoice,
                 Date = DateTime.Now,
                 MovementType = request.MovementType,
                 Description = request.Description,
-                CreaterUserId=1
+                CreaterUserId = 1
             };
+
 
             if (request.MovementType == "Giris")
             {
                 part.Stock += request.Amount;
                 warehousePart.StockQuantity += request.Amount;
+                part.PurchasePrice = request.Price;
+                part.Profit -= request.Amount * request.Price;
+                if (transaction.Invoice == true)
+                {
+                    part.VatPaid -= request.Amount * (request.Price * part.Vat / 100);
+                }
+
             }
             else if (request.MovementType == "Cikis")
             {
@@ -53,14 +62,14 @@ namespace StockTrackingApi.Application.Features.PartMovements.Command.CreatePart
 
                 part.Stock -= request.Amount;
                 warehousePart.StockQuantity -= request.Amount;
+                part.SalePrice = request.Price;
+                part.Profit += request.Amount * request.Price;
+
+                if (transaction.Invoice == true)
+                {
+                    part.VatPaid += request.Amount * (request.Price * part.Vat / 100);
+                }
             }
-          
-
-            float profit = part.Stock * (part.SalePrice - part.PurchasePrice);
-            float vatPaid = part.Stock * ((part.SalePrice * part.Vat / 100) - (part.PurchasePrice * part.Vat / 100));
-
-            part.Profit = profit;
-            part.VatPaid = vatPaid;
 
             await unitOfWork.GetWriteRepository<Part>().UpdateAsync(part);
             await unitOfWork.GetWriteRepository<WarehousePart>().UpdateAsync(warehousePart);

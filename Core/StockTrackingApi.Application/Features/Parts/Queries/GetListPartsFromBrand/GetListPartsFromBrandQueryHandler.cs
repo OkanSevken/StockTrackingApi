@@ -30,9 +30,7 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromBr
             foreach (var part in parts)
             {
                 var partModel = partModels.FirstOrDefault(x => x.Id == part.ModelId);
-
-                if (partModel != null)
-                {
+            
                     map.Add(new GetListPartsFromBrandQueryResponse
                     {
                         Id = part.Id,
@@ -44,11 +42,9 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromBr
                         VatPaid = part.VatPaid,
                         Stock = part.Stock,
                         Profit = part.Profit,
-                        Invoice = part.Invoice,
                         BrandName = partModel.Brand,
                         ModelName = partModel.Model
-                    });
-                }
+                    });                
             }
 
             return map;

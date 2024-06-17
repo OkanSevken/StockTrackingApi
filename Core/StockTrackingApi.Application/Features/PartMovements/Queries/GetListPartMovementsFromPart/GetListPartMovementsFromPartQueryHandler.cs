@@ -38,6 +38,7 @@ namespace StockTrackingApi.Application.Features.PartMovements.Queries.GetListPar
                     PartName=part,
                     WarehouseName = warehouse,
                     Amount = partMovement.Amount,
+                    Price = partMovement.Price,
                     Date=partMovement.Date,
                     MovementType=partMovement.MovementType,
                     Description=partMovement.Description,

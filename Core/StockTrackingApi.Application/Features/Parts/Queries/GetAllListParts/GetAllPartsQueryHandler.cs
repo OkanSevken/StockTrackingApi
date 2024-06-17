@@ -42,7 +42,6 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetAllListParts
                     VatPaid = part.VatPaid,
                     Stock = part.Stock,
                     Profit = part.Profit,
-                    Invoice = part.Invoice
                 });
             }
             return map;
