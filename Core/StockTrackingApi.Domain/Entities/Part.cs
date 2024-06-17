@@ -11,26 +11,24 @@ namespace StockTrackingApi.Domain.Entities
     {
         public Part() { }
 
-        public Part(string name, string description, float purchasePrice, float salePrice ,float vat, int stock, bool invoice,int modelId) 
+        public Part(string name, string description, float purchasePrice ,float vat, int modelId) 
         {
             Name = name;
             Description = description;
             PurchasePrice = purchasePrice;
-            SalePrice = salePrice;
+            //SalePrice = salePrice;
             Vat = vat;
-            Stock = stock;
-            Invoice = invoice;
+            //Stock = stock;
             ModelId = modelId;
         }
         public string Name { get; set; }
         public string Description { get; set; }
         public float PurchasePrice { get; set; }
-        public float SalePrice { get; set; }
+        public float SalePrice { get; set; } = 0;
         public float Vat { get; set; }
-        public int Stock { get; set; }
-        public float Profit { get; set; }
-        public bool Invoice { get; set; }
-        public float VatPaid { get; set; }
+        public int Stock { get; set; }=0;
+        public float Profit { get; set; }=0;
+        public float VatPaid { get; set; } = 0;
         public int ModelId { get; set; } //PartBrandModel'in id'si
        // public ICollection<WarehousePart> WarehouseParts { get; set; }
 

@@ -49,7 +49,6 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromCa
                             VatPaid = part.VatPaid,
                             Stock = part.Stock,
                             Profit = part.Profit,
-                            Invoice = part.Invoice,
                             BrandName = carBrand.Brand,
                             ModelName = carBrand.Model
                         });

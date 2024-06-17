@@ -63,6 +63,8 @@ namespace StockTrackingApi.Application.Features.PartMovements.Command.UpdatePart
 
             // PartMovement kaydı
             partMovements.Amount = newAmount;
+            partMovements.Price=request.Price;
+            partMovements.Invoice=request.Invoice;
             partMovements.MovementType = newMovementType;
             partMovements.Description = request.Description;
             partMovements.Date = DateTime.Now;

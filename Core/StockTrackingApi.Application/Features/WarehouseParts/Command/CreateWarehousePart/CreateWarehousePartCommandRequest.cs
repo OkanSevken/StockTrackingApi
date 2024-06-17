@@ -11,6 +11,5 @@ namespace StockTrackingApi.Application.Features.WarehouseParts.Command.CreateWar
     {
         public int WarehouseId { get; set; }
         public int PartId { get; set; }
-        public int StockQuantity { get; set; }
     }
 }

@@ -16,6 +16,5 @@ namespace StockTrackingApi.Application.Features.Parts.Command.UpdatePart
         public float SalePrice { get; set; }
         public float Vat { get; set; }
         public int Stock { get; set; }
-        public bool Invoice { get; set; }
     }
 }
