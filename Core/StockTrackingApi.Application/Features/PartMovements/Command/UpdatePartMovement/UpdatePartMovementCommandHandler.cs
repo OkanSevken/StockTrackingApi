@@ -26,41 +26,67 @@ namespace StockTrackingApi.Application.Features.PartMovements.Command.UpdatePart
             var partMovements = await unitOfWork.GetReadRepository<PartMovement>().GetAsync(x => x.Id == request.Id && x.IsActive == true && x.IsDeleted == false);
             var parts = await unitOfWork.GetReadRepository<Part>().GetAsync(x => x.Id == partMovements.PartId && x.IsActive == true && x.IsDeleted == false);
             var warehouseParts = await unitOfWork.GetReadRepository<WarehousePart>().GetAsync(x => x.PartId == partMovements.PartId && x.WarehouseId == partMovements.WarehouseId && x.IsActive == true && x.IsDeleted == false);
-            
+
             int oldAmount = partMovements.Amount;
             string oldMovementType = partMovements.MovementType;
-
+            bool oldInvoice = partMovements.Invoice;
+            int oldPrice = partMovements.Price;
 
             int newAmount = request.Amount;
             string newMovementType = request.MovementType;
+            bool newInvoice = request.Invoice;
+            int newPrice = request.Price;
 
-            // Part ve WarehousePart stok miktarlarını ilk haline getir
+            // Eski hareketin etkilerini geri al
             if (oldMovementType == "Giris")
             {
                 parts.Stock -= oldAmount;
                 warehouseParts.StockQuantity -= oldAmount;
+                parts.Profit += oldAmount * oldPrice;
+                if (oldInvoice)
+                {
+                    parts.VatPaid += oldAmount * (oldPrice * parts.Vat / 100);
+                }
             }
             else if (oldMovementType == "Cikis")
             {
                 parts.Stock += oldAmount;
                 warehouseParts.StockQuantity += oldAmount;
+                parts.Profit -= oldAmount * oldPrice;
+                if (oldInvoice)
+                {
+                    parts.VatPaid -= oldAmount * (oldPrice * parts.Vat / 100);
+                }
             }
-            // Part ve WarehousePart için yeni stok miktarlarını güncelle
+
+            // Yeni hareketin etkilerini uygula
             if (newMovementType == "Giris")
             {
                 parts.Stock += newAmount;
                 warehouseParts.StockQuantity += newAmount;
+                parts.PurchasePrice = newPrice;
+                parts.Profit -= newAmount * newPrice;
+                if (newInvoice)
+                {
+                    parts.VatPaid -= newAmount * (newPrice * parts.Vat / 100);
+                }
             }
             else if (newMovementType == "Cikis")
             {
+                if (parts.Stock < newAmount || warehouseParts.StockQuantity < newAmount)
+                {
+                    throw new Exception("Yetersiz Stok");
+                }
+
                 parts.Stock -= newAmount;
                 warehouseParts.StockQuantity -= newAmount;
+                parts.SalePrice = newPrice;
+                parts.Profit += newAmount * newPrice;
+                if (newInvoice)
+                {
+                    parts.VatPaid += newAmount * (newPrice * parts.Vat / 100);
+                }
             }
-
-
-            parts.Profit = parts.Stock * (parts.SalePrice - parts.PurchasePrice);
-            parts.VatPaid = parts.Stock * ((parts.SalePrice * parts.Vat / 100) - (parts.PurchasePrice * parts.Vat / 100));
-
             // PartMovement kaydı
             partMovements.Amount = newAmount;
             partMovements.Price=request.Price;

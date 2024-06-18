@@ -5,6 +5,7 @@ using StockTrackingApi.Application.Features.PartMovements.Command.CreatePartMove
 using StockTrackingApi.Application.Features.PartMovements.Command.DeletePartMovement;
 using StockTrackingApi.Application.Features.PartMovements.Command.UpdatePartMovement;
 using StockTrackingApi.Application.Features.PartMovements.Queries.GetAllListPartMovements;
+using StockTrackingApi.Application.Features.PartMovements.Queries.GetListPartMovementsFromInvoice;
 using StockTrackingApi.Application.Features.PartMovements.Queries.GetListPartMovementsFromPart;
 
 
@@ -30,6 +31,12 @@ namespace StockTrackingApi.Api.Controllers
         public async Task<IActionResult> GetListPartMovementsFromPart(int id)
         {
             var response = await mediator.Send(new GetListPartMovementsFromPartQueryRequest { Id = id });
+            return Ok(response);
+        }
+        [HttpPost]
+        public async Task<IActionResult> GetListPartMovementsFromInvoice(bool TF)
+        {
+            var response = await mediator.Send(new GetListPartMovementsFromInvoiceQueryRequest { Invoice = TF });
             return Ok(response);
         }
 

@@ -10,8 +10,6 @@ namespace StockTrackingApi.Application.Features.PartMovements.Command.UpdatePart
     public class UpdatePartMovementCommandRequest : IRequest<Unit>
     {
         public int Id { get; set; }
-        public int PartId { get; set; }
-        public int WarehouseId { get; set; }
         public int Amount { get; set; }
         public int Price { get; set; }
         public bool Invoice { get; set; }
