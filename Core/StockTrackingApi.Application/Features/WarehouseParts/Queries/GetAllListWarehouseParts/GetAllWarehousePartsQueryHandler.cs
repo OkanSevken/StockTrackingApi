@@ -35,7 +35,9 @@ namespace StockTrackingApi.Application.Features.WarehouseParts.Queries.GetAllLis
                     map.Add(new GetAllWarehousePartsQueryResponse
                     {
                         Id = warehousePart.Id,
+                        WarehouseId = warehousePart.WarehouseId,
                         WarehouseName = warehouse,
+                        PartId=warehousePart.PartId,
                         PartName = part,
                         StockQuantity = warehousePart.StockQuantity
                     });    
