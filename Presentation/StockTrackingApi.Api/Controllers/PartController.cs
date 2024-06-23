@@ -23,7 +23,7 @@ namespace StockTrackingApi.Api.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles ="admin,user")]
+        //[Authorize(Roles ="admin,user")]
         public async Task<IActionResult> GetAllParts()
         {
             var response = await mediator.Send(new GetAllPartsQueryRequest());

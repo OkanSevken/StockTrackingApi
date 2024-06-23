@@ -1,10 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromCarBrand;
 using StockTrackingApi.Application.Features.Warehouses.Command.CreateWarehouse;
 using StockTrackingApi.Application.Features.Warehouses.Command.DeleteWarehouse;
 using StockTrackingApi.Application.Features.Warehouses.Command.UpdateWarehouse;
 using StockTrackingApi.Application.Features.Warehouses.Queries.GetAllListWarehouse;
+using StockTrackingApi.Application.Features.Warehouses.Queries.GetListWarehouseFromPart;
 
 namespace StockTrackingApi.Api.Controllers
 {
@@ -22,6 +24,12 @@ namespace StockTrackingApi.Api.Controllers
         public async Task<IActionResult> GetAllWarehouse()
         {
             var response = await mediator.Send(new GetAllWarehouseQueryRequest());
+            return Ok(response);
+        }
+        [HttpPost]
+        public async Task<IActionResult> GetListWarehouseFromPart(int id)
+        {
+            var response = await mediator.Send(new GetListWarehouseFromPartQueryRequest { PartId = id });
             return Ok(response);
         }
 
