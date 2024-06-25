@@ -32,7 +32,8 @@ namespace StockTrackingApi.Application.Features.Parts.Command.CreatePart
                 request.Description,
                 request.PurchasePrice,
                 request.Vat,
-                request.ModelId
+                request.CategoryId,
+                request.PartModelId
             );
             part.CreatedDate = DateTime.Now;
             part.CreaterUserId = 1;

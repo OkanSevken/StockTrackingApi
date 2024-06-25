@@ -29,7 +29,7 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromBr
 
             foreach (var part in parts)
             {
-                var partModel = partModels.FirstOrDefault(x => x.Id == part.ModelId);
+                var partModel = partModels.FirstOrDefault(x => x.Id == part.PartModelId);
             
                     map.Add(new GetListPartsFromBrandQueryResponse
                     {

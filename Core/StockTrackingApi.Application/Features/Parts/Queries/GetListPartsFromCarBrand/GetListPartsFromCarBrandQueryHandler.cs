@@ -34,7 +34,7 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromCa
 
                 foreach (var part in parts)
                 {
-                    var carPart = carParts.FirstOrDefault(x => x.PartModelId == part.ModelId);
+                    var carPart = carParts.FirstOrDefault(x => x.PartModelId == part.PartModelId);
 
                     if (carPart != null)
                     {
