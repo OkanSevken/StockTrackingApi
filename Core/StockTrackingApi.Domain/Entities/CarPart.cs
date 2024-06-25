@@ -19,7 +19,7 @@ namespace StockTrackingApi.Domain.Entities
         public int CarModelId { get; set; }
         public int PartModelId { get; set; }
 
-        public CarBrandModel CarBrandModel { get; set; }
-        public PartBrandModel PartBrandModel { get; set; }
+        public CarModel CarModel { get; set; }
+        public PartModel PartModel { get; set; }
     }
 }

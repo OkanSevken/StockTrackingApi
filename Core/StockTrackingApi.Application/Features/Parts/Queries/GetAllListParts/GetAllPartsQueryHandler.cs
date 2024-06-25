@@ -22,20 +22,27 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetAllListParts
         public async Task<IList<GetAllPartsQueryResponse>> Handle(GetAllPartsQueryRequest request, CancellationToken cancellationToken)
         {
             var parts = await unitOfWork.GetReadRepository<Part>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
-            var model = await unitOfWork.GetReadRepository<PartBrandModel>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
+            var partModels = await unitOfWork.GetReadRepository<PartModel>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
+            var carModels = await unitOfWork.GetReadRepository<CarModel>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
+            var partBrands = await unitOfWork.GetReadRepository<PartBrand>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
+            var carBrands = await unitOfWork.GetReadRepository<CarBrand>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
             List<GetAllPartsQueryResponse> map = new List<GetAllPartsQueryResponse>();
 
             foreach (var part in parts)
             {
-                var modelName = model.FirstOrDefault(u => u.Id == part.ModelId).Model;
-                var brandName = model.FirstOrDefault(u => u.Id == part.ModelId).Brand;
+                var partModel = partModels.FirstOrDefault(pm => pm.Id == part.PartModelId);
+                var partBrand = partBrands.FirstOrDefault(pb => pb.Id == partModel.PartBrandId);
+                var carModel = carModels.FirstOrDefault(cm => cm.Id == partModel.PartBrandId);
+                var carBrand = carBrands.FirstOrDefault(cb => cb.Id == carModel.CarBrandId);
                 map.Add(new GetAllPartsQueryResponse
                 {
                     Id = part.Id,
                     Name = part.Name,
                     Description = part.Description,
-                    BrandName = brandName,
-                    ModelName = modelName,
+                    CarBrandName = carBrand.BrandName,
+                    CarModelName = carModel.ModelName,
+                    PartBrandName = partBrand.BrandName,
+                    PartModelName = partModel.ModelName,
                     PurchasePrice = part.PurchasePrice,
                     SalePrice = part.SalePrice,
                     Vat = part.Vat,

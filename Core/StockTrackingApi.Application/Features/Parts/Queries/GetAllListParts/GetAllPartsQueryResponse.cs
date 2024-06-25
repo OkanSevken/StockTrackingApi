@@ -11,8 +11,10 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetAllListParts
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string BrandName { get; set; }
-        public string ModelName { get; set; }
+        public string CarBrandName { get; set; }
+        public string CarModelName { get; set; }
+        public string PartBrandName { get; set; }
+        public string PartModelName { get; set; }
         public float PurchasePrice { get; set; }
         public float SalePrice { get; set; }
         public float Vat { get; set; }

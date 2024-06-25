@@ -22,25 +22,30 @@ namespace StockTrackingApi.Application.Features.CarParts.Queries.GetAllListCarPa
         public async Task<IList<GetAllCarPartsQueryResponse>> Handle(GetAllCarPartsQueryRequest request, CancellationToken cancellationToken)
         {
             var carParts = await unitOfWork.GetReadRepository<CarPart>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
-            var carBrands = await unitOfWork.GetReadRepository<CarBrandModel>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
-            var partBrands = await unitOfWork.GetReadRepository<PartBrandModel>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
+            var carModels = await unitOfWork.GetReadRepository<CarModel>().GetAllAsync(x => x.IsActive && x.IsDeleted == false);
+            var partModels = await unitOfWork.GetReadRepository<PartModel>().GetAllAsync(x => x.IsActive && x.IsDeleted == false);
+            var carBrands = await unitOfWork.GetReadRepository<CarBrand>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
+            var partBrands = await unitOfWork.GetReadRepository<PartBrand>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
 
             List<GetAllCarPartsQueryResponse> map = new List<GetAllCarPartsQueryResponse>();
 
             foreach (var carPart in carParts)
             {
-                var carBrandModel = carBrands.FirstOrDefault(w => w.Id == carPart.CarModelId);              
-                var partBrandModel = partBrands.FirstOrDefault(p => p.Id == carPart.PartModelId);
-         
+                var carModel = carModels.FirstOrDefault(w => w.Id == carPart.CarModelId);
+                var partModel = partModels.FirstOrDefault(p => p.Id == carPart.PartModelId);
+                var carBrand = carBrands.FirstOrDefault(c => c.Id == carModel.CarBrandId);
+                var partBrand = partBrands.FirstOrDefault(pb => pb.Id == partModel.PartBrandId);
+
                 map.Add(new GetAllCarPartsQueryResponse
                 {
                     Id = carPart.Id,
-                    CarBrand = carBrandModel.Brand,
-                    CarModel = carBrandModel.Model,
-                    PartBrand = partBrandModel.Brand,
-                    PartModel = partBrandModel.Model,
+                    CarBrand = carBrand.BrandName, 
+                    CarModel = carModel.ModelName,  
+                    PartBrand = partBrand.BrandName,  
+                    PartModel = partModel.ModelName  
                 });
             }
+
             return map;
         }
     }
