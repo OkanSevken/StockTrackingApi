@@ -15,7 +15,7 @@ namespace StockTrackingApi.Api.Controllers
             this.mediator = mediator;
         }
         [HttpPost]
-        public async Task<IActionResult> GetListPartModelsFromBrand(int id)
+        public async Task<IActionResult> GetListCarModelsFromBrand(int id)
         {
             var response = await mediator.Send(new GetListCarModelsFromBrandQueryRequest { Id = id });
             return Ok(response);

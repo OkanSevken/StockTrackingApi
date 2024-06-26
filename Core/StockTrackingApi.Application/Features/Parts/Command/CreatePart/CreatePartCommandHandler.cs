@@ -33,7 +33,8 @@ namespace StockTrackingApi.Application.Features.Parts.Command.CreatePart
                 request.PurchasePrice,
                 request.Vat,
                 request.CategoryId,
-                request.PartModelId
+                request.PartModelId,
+                request.CarModelId
             );
             part.CreatedDate = DateTime.Now;
             part.CreaterUserId = 1;

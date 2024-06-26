@@ -17,5 +17,6 @@ namespace StockTrackingApi.Application.Features.Parts.Command.CreatePart
         // public int Stock { get; set; }
         public int CategoryId { get; set; }
         public int PartModelId { get; set; }
+        public int CarModelId { get; set; }
     }
 }

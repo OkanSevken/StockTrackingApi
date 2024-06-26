@@ -44,6 +44,11 @@ namespace StockTrackingApi.Persistence.Context
                 .HasOne(p => p.PartModel)
                 .WithMany()
                 .HasForeignKey(p => p.PartModelId);
+            // Part ile CarModel arasındaki ilişki
+            modelBuilder.Entity<Part>()
+                .HasOne(p => p.CarModel)
+                .WithMany()
+                .HasForeignKey(p => p.CarModelId);
 
             // PartModel ile PartBrand arasındaki ilişki
             modelBuilder.Entity<PartModel>()

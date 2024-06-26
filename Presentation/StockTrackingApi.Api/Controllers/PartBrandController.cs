@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StockTrackingApi.Application.Features.PartBrands.Queries.GetAllListPartBrands;
+using StockTrackingApi.Application.Features.PartBrands.Queries.GetListPartBrandsFromCarModels;
+using StockTrackingApi.Application.Features.PartModels.Queries.GetListPartModelsFromBrand;
 
 namespace StockTrackingApi.Api.Controllers
 {
@@ -21,6 +23,13 @@ namespace StockTrackingApi.Api.Controllers
         {
             var response = await mediator.Send(new GetAllListPartBrandsQueryRequest());
 
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetListPartBrandsFromCarModels(int id)
+        {
+            var response = await mediator.Send(new GetListPartBrandsFromCarModelsQueryRequest { Id = id });
             return Ok(response);
         }
     }
