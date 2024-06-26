@@ -11,7 +11,7 @@ namespace StockTrackingApi.Domain.Entities
     {
         public Part() { }
 
-        public Part(string name, string description, float purchasePrice ,float vat, int categoryId,int partModelId) 
+        public Part(string name, string description, float purchasePrice ,float vat, int categoryId,int partModelId,int carModelId) 
         {
             Name = name;
             Description = description;
@@ -21,6 +21,7 @@ namespace StockTrackingApi.Domain.Entities
             //Stock = stock;
             CategoryId = categoryId;
             PartModelId = partModelId;
+            CarModelId = carModelId;
         }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -32,11 +33,13 @@ namespace StockTrackingApi.Domain.Entities
         public float VatPaid { get; set; } = 0;
         public int CategoryId { get; set; }
         public int PartModelId { get; set; }
+        public int? CarModelId { get; set; }
         //public int ModelId { get; set; } //PartBrandModel'in id'si
         // public ICollection<WarehousePart> WarehouseParts { get; set; }
 
         public Category Category { get; set; }
         public PartModel PartModel { get; set; }
+        public CarModel CarModel{ get; set; }
 
 
 
