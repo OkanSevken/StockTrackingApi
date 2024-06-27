@@ -9,6 +9,6 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromBr
 {
     public class GetListPartsFromBrandQueryRequest : IRequest<IList<GetListPartsFromBrandQueryResponse>>
     {
-        public string BrandName { get; set; }
+        public int Id { get; set; }
     }
 }

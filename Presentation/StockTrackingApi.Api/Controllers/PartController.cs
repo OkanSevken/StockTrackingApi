@@ -7,6 +7,7 @@ using StockTrackingApi.Application.Features.Parts.Command.CreatePart;
 using StockTrackingApi.Application.Features.Parts.Command.DeletePart;
 using StockTrackingApi.Application.Features.Parts.Command.UpdatePart;
 using StockTrackingApi.Application.Features.Parts.Queries.GetAllListParts;
+using StockTrackingApi.Application.Features.Parts.Queries.GetListPart;
 using StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromBrand;
 using StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromCarBrand;
 
@@ -23,6 +24,12 @@ namespace StockTrackingApi.Api.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetListPart(int id)
+        {
+            var response = await mediator.Send(new GetListPartQueryRequest(id));
+            return Ok(response);
+        }
+        [HttpGet]
         //[Authorize(Roles ="admin,user")]
         public async Task<IActionResult> GetAllParts()
         {
@@ -30,9 +37,9 @@ namespace StockTrackingApi.Api.Controllers
             return Ok(response);
         }
         [HttpPost]
-        public async Task<IActionResult> GetListPartsFromBrand(string name)
+        public async Task<IActionResult> GetListPartsFromBrand(int id)
         {
-            var response = await mediator.Send(new GetListPartsFromBrandQueryRequest { BrandName = name });
+            var response = await mediator.Send(new GetListPartsFromBrandQueryRequest { Id = id });
             return Ok(response);
         }
 

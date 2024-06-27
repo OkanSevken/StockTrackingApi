@@ -12,7 +12,7 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromCa
         public string Name { get; set; }
         public string BrandName { get; set; }
         public string ModelName { get; set; }
-        public string Description { get; set; }
+        public string PartCode { get; set; }
         public float PurchasePrice { get; set; }
         public float SalePrice { get; set; }
         public float Vat { get; set; }

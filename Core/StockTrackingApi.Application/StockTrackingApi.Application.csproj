@@ -21,7 +21,6 @@
     <Folder Include="Features\CarBrands\Command\" />
     <Folder Include="Features\CarModels\Command\" />
     <Folder Include="Features\Categories\Command\" />
-    <Folder Include="Features\Categories\Queries\" />
     <Folder Include="Features\PartBrands\Command\" />
     <Folder Include="Features\PartModels\Command\" />
   </ItemGroup>

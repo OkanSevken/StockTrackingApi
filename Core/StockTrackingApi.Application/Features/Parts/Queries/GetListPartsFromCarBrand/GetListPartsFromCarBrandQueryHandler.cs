@@ -42,7 +42,7 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromCa
                         {
                             PartId = part.Id,
                             Name = part.Name,
-                            Description = part.Description,
+                            PartCode = part.PartCode,
                             PurchasePrice = part.PurchasePrice,
                             SalePrice = part.SalePrice,
                             Vat = part.Vat,

@@ -26,7 +26,7 @@ namespace StockTrackingApi.Application.Features.Parts.Command.UpdatePart
             var parts = await unitOfWork.GetReadRepository<Part>().GetAsync(x=>x.Id==request.Id && x.IsActive==true && x.IsDeleted==false);
 
             parts.Name = request.Name;
-            parts.Description = request.Description;
+            parts.PartCode = request.PartCode;
             parts.PurchasePrice = request.PurchasePrice;
             parts.SalePrice = request.SalePrice;
             parts.Vat=request.Vat;

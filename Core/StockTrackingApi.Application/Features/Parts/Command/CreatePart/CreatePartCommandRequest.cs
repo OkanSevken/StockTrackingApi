@@ -10,7 +10,7 @@ namespace StockTrackingApi.Application.Features.Parts.Command.CreatePart
     public class CreatePartCommandRequest : IRequest<Unit>
     {
         public string Name { get; set; }
-        public string Description { get; set; }
+        public string PartCode { get; set; }
         public float PurchasePrice { get; set; }
         //public float SalePrice { get; set; } 
         public float Vat { get; set; }

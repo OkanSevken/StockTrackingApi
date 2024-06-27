@@ -29,7 +29,7 @@ namespace StockTrackingApi.Application.Features.Parts.Command.CreatePart
             Part part = new
             (
                 request.Name,
-                request.Description,
+                request.PartCode,
                 request.PurchasePrice,
                 request.Vat,
                 request.CategoryId,

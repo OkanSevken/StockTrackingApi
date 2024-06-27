@@ -21,8 +21,8 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromBr
         }
         public async Task<IList<GetListPartsFromBrandQueryResponse>> Handle(GetListPartsFromBrandQueryRequest request, CancellationToken cancellationToken)
         {
-            var parts = await unitOfWork.GetReadRepository<Part>().GetAllAsync(x => x.IsActive && !x.IsDeleted);
-            var partModels = await unitOfWork.GetReadRepository<PartBrandModel>().GetAllAsync(x => x.Brand == request.BrandName && x.IsActive == true && !x.IsDeleted);
+            var parts = await unitOfWork.GetReadRepository<Part>().GetAllAsync(x => x.PartModelId==request.Id && x.IsActive && !x.IsDeleted);
+            var partModels = await unitOfWork.GetReadRepository<PartModel>().GetAllAsync(x =>x.IsActive == true && !x.IsDeleted);
 
 
             List<GetListPartsFromBrandQueryResponse> map = new List<GetListPartsFromBrandQueryResponse>();
@@ -34,16 +34,7 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPartsFromBr
                     map.Add(new GetListPartsFromBrandQueryResponse
                     {
                         Id = part.Id,
-                        Name = part.Name,
-                        Description = part.Description,
-                        PurchasePrice = part.PurchasePrice,
-                        SalePrice = part.SalePrice,
-                        Vat = part.Vat,
-                        VatPaid = part.VatPaid,
-                        Stock = part.Stock,
-                        Profit = part.Profit,
-                        BrandName = partModel.Brand,
-                        ModelName = partModel.Model
+                        PartName= partModel.ModelName,
                     });                
             }
 

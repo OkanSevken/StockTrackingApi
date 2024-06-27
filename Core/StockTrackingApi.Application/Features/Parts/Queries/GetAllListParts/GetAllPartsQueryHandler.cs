@@ -26,23 +26,28 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetAllListParts
             var carModels = await unitOfWork.GetReadRepository<CarModel>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
             var partBrands = await unitOfWork.GetReadRepository<PartBrand>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
             var carBrands = await unitOfWork.GetReadRepository<CarBrand>().GetAllAsync(x => x.IsActive == true && x.IsDeleted == false);
+            var categories= await unitOfWork.GetReadRepository<Category>().GetAllAsync(x => x.IsActive==true &&x.IsDeleted == false);
+
             List<GetAllPartsQueryResponse> map = new List<GetAllPartsQueryResponse>();
 
             foreach (var part in parts)
             {
                 var partModel = partModels.FirstOrDefault(pm => pm.Id == part.PartModelId);
-                var partBrand = partBrands.FirstOrDefault(pb => pb.Id == partModel.PartBrandId);
-                var carModel = carModels.FirstOrDefault(cm => cm.Id == partModel.PartBrandId);
-                var carBrand = carBrands.FirstOrDefault(cb => cb.Id == carModel.CarBrandId);
+                var carModel = carModels.FirstOrDefault(cm => cm.Id == part.CarModelId);
+                var partBrand = partBrands.FirstOrDefault(pb => pb.Id == partModel?.PartBrandId);
+                var carBrand = carBrands.FirstOrDefault(cb => cb.Id == carModel?.CarBrandId);
+                var category = categories.FirstOrDefault(c => c.Id == part.CategoryId);
+
                 map.Add(new GetAllPartsQueryResponse
                 {
                     Id = part.Id,
                     Name = part.Name,
-                    Description = part.Description,
-                    CarBrandName = carBrand.BrandName,
-                    CarModelName = carModel.ModelName,
-                    PartBrandName = partBrand.BrandName,
-                    PartModelName = partModel.ModelName,
+                    PartCode = part.PartCode,
+                    CarBrandName = carBrand?.BrandName,
+                    CarModelName = carModel?.ModelName,
+                    PartBrandName = partBrand?.BrandName,
+                    PartModelName = partModel?.ModelName,
+                    CategoryName=category.CategoryName,
                     PurchasePrice = part.PurchasePrice,
                     SalePrice = part.SalePrice,
                     Vat = part.Vat,
@@ -53,5 +58,7 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetAllListParts
             }
             return map;
         }
+
+
     }
 }

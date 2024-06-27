@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StockTrackingApi.Application.Features.Parts.Queries.GetAllListParts
+namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPart
 {
-    public class GetAllPartsQueryResponse
+    public class GetListPartQueryResponse
     {
         public int Id { get; set; }
         public string Name { get; set; }
