@@ -31,7 +31,7 @@ namespace StockTrackingApi.Application.Features.PartMovements.Queries.GetListPar
                 map.Add(new GetListPartMovementsFromInvoiceQueryResponse
                 {
                     PartId=partInvoice.Id,
-                    PartName = partInvoice.Name,
+                    PartName = partInvoice?.Name,
                 });
             }
             return map;

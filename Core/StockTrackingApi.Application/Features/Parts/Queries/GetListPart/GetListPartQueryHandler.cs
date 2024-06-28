@@ -32,11 +32,11 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPart
 
 
 
-            var partModel = partModels.FirstOrDefault(pm => pm.Id == parts.PartModelId);
-            var carModel = carModels.FirstOrDefault(cm => cm.Id == parts.CarModelId);
+            var partModel = partModels.FirstOrDefault(pm => pm.Id == parts?.PartModelId);
+            var carModel = carModels.FirstOrDefault(cm => cm.Id == parts?.CarModelId);
             var partBrand = partBrands.FirstOrDefault(pb => pb.Id == partModel?.PartBrandId);
             var carBrand = carBrands.FirstOrDefault(cb => cb.Id == carModel?.CarBrandId);
-            var category = categories.FirstOrDefault(c => c.Id == parts.CategoryId);
+            var category = categories.FirstOrDefault(c => c.Id == parts?.CategoryId);
             List<GetListPartQueryResponse> map = new List<GetListPartQueryResponse>();
 
             map.Add(new GetListPartQueryResponse
@@ -48,7 +48,8 @@ namespace StockTrackingApi.Application.Features.Parts.Queries.GetListPart
                 CarModelName = carModel?.ModelName,
                 PartBrandName = partBrand?.BrandName,
                 PartModelName = partModel?.ModelName,
-                CategoryName = category.CategoryName,
+                PartModelYear=partModel.Year,
+                CategoryName = category?.CategoryName,
                 PurchasePrice = parts.PurchasePrice,
                 SalePrice = parts.SalePrice,
                 Vat = parts.Vat,

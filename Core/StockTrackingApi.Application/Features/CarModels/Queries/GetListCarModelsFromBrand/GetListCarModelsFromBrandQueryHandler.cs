@@ -32,9 +32,9 @@ namespace StockTrackingApi.Application.Features.CarModels.Queries.GetListCarMode
                 map.Add(new GetListCarModelsFromBrandQueryResponse
                 {
                     Id = carModel.Id,
-                    ModelName = carModel.ModelName,
+                    ModelName = carModel?.ModelName,
                     Year = carModel.Year,
-                    CarBrandName=carBrand.BrandName
+                    CarBrandName=carBrand?.BrandName
                 });
             }
             return map;

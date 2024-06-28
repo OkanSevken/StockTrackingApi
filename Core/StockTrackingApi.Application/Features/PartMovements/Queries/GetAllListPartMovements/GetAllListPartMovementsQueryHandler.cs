@@ -29,8 +29,8 @@ namespace StockTrackingApi.Application.Features.PartMovements.Queries.GetAllList
 
             foreach (var partMovement in partMovements)
             {
-                var warehouse = warehouses.FirstOrDefault(w => w.Id == partMovement.WarehouseId).Name;
-                var part = parts.FirstOrDefault(p => p.Id == partMovement.PartId).Name;
+                var warehouse = warehouses.FirstOrDefault(w => w.Id == partMovement.WarehouseId)?.Name;
+                var part = parts.FirstOrDefault(p => p.Id == partMovement.PartId)?.Name;
 
                 map.Add(new GetAllListPartMovementsQueryResponse
                 {

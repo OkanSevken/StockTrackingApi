@@ -29,21 +29,22 @@ namespace StockTrackingApi.Application.Features.WarehouseParts.Queries.GetAllLis
 
             foreach (var warehousePart in warehouseParts)
             {
-                var warehouse = warehouses.FirstOrDefault(w => w.Id == warehousePart.WarehouseId).Name;
-                var part = parts.FirstOrDefault(p => p.Id == warehousePart.PartId).Name;
+                var warehouse = warehouses.FirstOrDefault(w => w.Id == warehousePart.WarehouseId)?.Name;
+                var part = parts.FirstOrDefault(p => p.Id == warehousePart.PartId)?.Name;
 
-                    map.Add(new GetAllWarehousePartsQueryResponse
-                    {
-                        Id = warehousePart.Id,
-                        WarehouseId = warehousePart.WarehouseId,
-                        WarehouseName = warehouse,
-                        PartId=warehousePart.PartId,
-                        PartName = part,
-                        StockQuantity = warehousePart.StockQuantity
-                    });    
+                map.Add(new GetAllWarehousePartsQueryResponse
+                {
+                    Id = warehousePart.Id,
+                    WarehouseId = warehousePart.WarehouseId,
+                    WarehouseName = warehouse,
+                    PartId = warehousePart.PartId,
+                    PartName = part,
+                    StockQuantity = warehousePart.StockQuantity
+                });
             }
 
             return map;
         }
+
     }
 }
