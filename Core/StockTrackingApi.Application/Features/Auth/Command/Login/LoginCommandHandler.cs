@@ -64,6 +64,7 @@ namespace StockTrackingApi.Application.Features.Auth.Command.Login
                 
                     return new LoginCommandResponse
                     {
+                        Id=user.Id,
                         Token = _token,
                         RefreshToken = refreshToken,
                         Expiration = token.ValidTo

@@ -30,7 +30,7 @@ builder.Services.AddCustomMapper();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hospital API", Version = "v1", Description = "Hospital API swagger client." });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "StockTracking API", Version = "v1", Description = "StockTracking API swagger client." });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
         Name = "Authorization",

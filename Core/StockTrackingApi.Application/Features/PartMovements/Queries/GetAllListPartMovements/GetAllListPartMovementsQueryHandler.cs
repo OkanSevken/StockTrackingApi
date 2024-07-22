@@ -31,11 +31,13 @@ namespace StockTrackingApi.Application.Features.PartMovements.Queries.GetAllList
             {
                 var warehouse = warehouses.FirstOrDefault(w => w.Id == partMovement.WarehouseId)?.Name;
                 var part = parts.FirstOrDefault(p => p.Id == partMovement.PartId)?.Name;
+                var partCode = parts.FirstOrDefault(x => x.Id == partMovement.PartId)?.PartCode;
 
                 map.Add(new GetAllListPartMovementsQueryResponse
                 {
                     Id = partMovement.Id,
                     PartName = part,
+                    PartCode=partCode,
                     WarehouseName = warehouse,
                     Amount = partMovement.Amount,
                     Price = partMovement.Price,
