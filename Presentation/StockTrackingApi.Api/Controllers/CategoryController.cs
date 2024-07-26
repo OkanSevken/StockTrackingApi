@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StockTrackingApi.Application.Features.Categories.Command.CreateCategory;
 using StockTrackingApi.Application.Features.Categories.Queries.GetAllListCategories;
+
 
 namespace StockTrackingApi.Api.Controllers
 {
@@ -20,6 +22,13 @@ namespace StockTrackingApi.Api.Controllers
         {
             var response = await mediator.Send(new GetAllListCategoriesQueryRequest());
             return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCategories(CreateCategoryCommandRequest request)
+        {
+            await mediator.Send(request);
+            return Ok();
         }
     }
 }

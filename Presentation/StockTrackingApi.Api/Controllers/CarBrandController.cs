@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StockTrackingApi.Application.Features.CarBrands.Command.CreateCarBrand;
 using StockTrackingApi.Application.Features.CarBrands.Queries.GetAllListCarBrands;
 
 namespace StockTrackingApi.Api.Controllers
@@ -22,6 +23,13 @@ namespace StockTrackingApi.Api.Controllers
             var response = await mediator.Send(new GetAllListCarBrandsQueryRequest());
 
             return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCarBrand(CreateCarBrandCommandRequest request)
+        {
+            await mediator.Send(request);
+            return Ok();
         }
     }
 }

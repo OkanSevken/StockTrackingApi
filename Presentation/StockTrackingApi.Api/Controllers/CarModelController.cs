@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StockTrackingApi.Application.Features.CarModels.Command.CreateCarModel;
 using StockTrackingApi.Application.Features.CarModels.Queries.GetListCarModelsFromBrand;
 
 namespace StockTrackingApi.Api.Controllers
@@ -19,6 +20,13 @@ namespace StockTrackingApi.Api.Controllers
         {
             var response = await mediator.Send(new GetListCarModelsFromBrandQueryRequest { Id = id });
             return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCarModel(CreateCarModelCommandRequest request)
+        {
+            await mediator.Send(request);
+            return Ok();
         }
     }
 }
