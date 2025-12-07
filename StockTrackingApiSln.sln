@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.6.33815.320
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11222.15 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6E8BCAA7-0940-4148-8866-19A6FFE7C9B1}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockTrackingApi.Api", "Presentation\StockTrackingApi.Api\StockTrackingApi.Api.csproj", "{484894D0-AEE5-42B5-ACBE-8A86BD3B2EC7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrackingApi.Mapper", "StockTrackingapi.Mapper\StockTrackingApi.Mapper.csproj", "{EEF31979-4067-4BC1-8C7F-5BA2AE9B31C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrackingApi.Mcp", "StockTrackingApi.Mcp\StockTrackingApi.Mcp.csproj", "{D5423AC1-A9CD-4DE8-8D17-42FCC42B4C9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{EEF31979-4067-4BC1-8C7F-5BA2AE9B31C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEF31979-4067-4BC1-8C7F-5BA2AE9B31C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEF31979-4067-4BC1-8C7F-5BA2AE9B31C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5423AC1-A9CD-4DE8-8D17-42FCC42B4C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5423AC1-A9CD-4DE8-8D17-42FCC42B4C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5423AC1-A9CD-4DE8-8D17-42FCC42B4C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5423AC1-A9CD-4DE8-8D17-42FCC42B4C9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
